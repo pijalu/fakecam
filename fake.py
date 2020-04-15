@@ -6,17 +6,7 @@ import requests
 import pyfakewebcam
 from keras.models import load_model
 
-# def get_mask(frame, bodypix_url='http://localhost:9000'):
-#     _, data = cv2.imencode(".jpg", frame)
-#     r = requests.post(
-#         url=bodypix_url,
-#         data=data.tobytes(),
-#         headers={'Content-Type': 'application/octet-stream'})
-#     mask = np.frombuffer(r.content, dtype=np.uint8)
-#     mask = mask.reshape((frame.shape[0], frame.shape[1]))
-#     return mask
-
-model = load_model('/models/deconv_bnoptimized_munet.h5', compile=False)
+model = load_model('/models/deconv_bnoptimized_munet.h5', compile=true)
 
 def get_mask(frame):
     # Preprocess
