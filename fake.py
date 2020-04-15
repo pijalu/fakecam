@@ -4,9 +4,9 @@ import sys
 import numpy as np
 import requests
 import pyfakewebcam
-from keras.models import load_model
+import tensorflow as tf
 
-model = load_model('/models/deconv_bnoptimized_munet.h5', compile=true)
+model = tf.keras.models.load_model('/models/deconv_bnoptimized_munet.h5', compile=False)
 
 def get_mask(frame):
     # Preprocess

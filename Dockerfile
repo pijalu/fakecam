@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir -r /src/requirements.txt
 
 # copy in the virtual background
 
-COPY background.jpg /data/
+COPY *.jpg /data/
 COPY *.h5 /models/
 # run our fake camera script (with unbuffered output for easier debug)
 
