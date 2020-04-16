@@ -6,7 +6,7 @@ import requests
 import pyfakewebcam
 import tensorflow as tf
 
-model = tf.keras.models.load_model('/models/deconv_bnoptimized_munet.h5', compile=False)
+model = tf.keras.models.load_model('models/deconv_bnoptimized_munet.h5', compile=False)
 
 def get_mask(frame):
     # Preprocess
@@ -42,8 +42,9 @@ def shift_image(img, dx, dy):
 def hologram_effect(img):
     # add a blue tint
     holo = cv2.applyColorMap(img, cv2.COLORMAP_WINTER)
+    #return holo
     # add a halftone effect
-    bandLength, bandGap = 2, 3
+    bandLength, bandGap = 3, 3
     for y in range(holo.shape[0]):
         if y % (bandLength+bandGap) < bandLength:
             holo[y,:,:] = holo[y,:,:] * np.random.uniform(0.1, 0.3)
@@ -87,7 +88,7 @@ cap.set(cv2.CAP_PROP_FPS, 60)
 fake = pyfakewebcam.FakeWebcam('/dev/video20', width, height)
 
 # load the virtual background
-background = cv2.imread("/data/background.jpg")
+background = cv2.imread("data/background.jpg")
 background_scaled = cv2.resize(background, (width, height))
 
 # frames forever
